@@ -66,7 +66,7 @@ resource "ecloud_virtualmachine" "tf-trial-2" {
   name         = "tf-trial-2"
   computername = "tf-trial-2.${local.domain_fqdn}"
   cpu          = 2
-  ram          = 2
+  ram          = 4
 
   disk {
     capacity = 40
