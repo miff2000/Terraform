@@ -60,3 +60,22 @@ resource "ecloud_virtualmachine" "tf-trial" {
   network_id           = data.ecloud_network.web.id
   external_ip_required = false
 }
+
+resource "ecloud_virtualmachine" "tf-trial-2" {
+  solution_id  = data.ecloud_solution.uat-solution.id
+  name         = "tf-trial-2"
+  computername = "tf-trial-2.${local.domain_fqdn}"
+  cpu          = 2
+  ram          = 2
+
+  disk {
+    capacity = 40
+  }
+
+  template             = data.ecloud_template.centos7.id
+  environment          = data.ecloud_solution.uat-solution.environment
+  site_id              = data.ecloud_site.site-a.id
+  datastore_id         = data.ecloud_datastore.site-a-datastore1.id
+  network_id           = data.ecloud_network.web.id
+  external_ip_required = false
+}
